@@ -1,9 +1,11 @@
-import React  from 'react';
+import React, { useContext }  from 'react';
 import { useForm } from 'react-hook-form';
 import { HiPhotograph } from "react-icons/hi";
+import { authContext } from '../../../../context/AuthProvider';
 
 const Post = () => {
     const { register, handleSubmit } = useForm();
+    const {user} = useContext(authContext);
 
     const imageHostKey = process.env.REACT_APP_imagebb_key;
     const onSubmit = (data) => {
@@ -24,12 +26,18 @@ const Post = () => {
                 console.log(imgData.data.url);
                 const post = {
                         text : data.text,
-                        image : imgData.data.url
+                        image : imgData.data.url,
+                        like: 0,
+                        user : {
+                           userName : user?.displayName, 
+                           userEmail : user?.email,
+                           userPhoto : user?.photoURL,
+                        }
                     }
                     console.log(post)
 
                     // save product information to the database
-                    fetch('',{
+                    fetch('http://localhost:5000/posts',{
                         method: 'POST',
                         headers: {
                             'content-type' : 'application/json'
@@ -38,14 +46,14 @@ const Post = () => {
                     })
                     .then(res=> res.json())
                     .then(result=>{
-                        
+                        console.log(result)
                     })
             }
         })
     }
 
     return (
-        <form className='flex flex-col' onSubmit={handleSubmit(onSubmit)}>
+        <form className='flex flex-col justify-center items-center' onSubmit={handleSubmit(onSubmit)}>
             <textarea className="textarea textarea-bordered w-1/4" placeholder="What's in your mind" type='text' {...register("text")} name='text'></textarea>
             <div className='flex flex-col'>
                 <div className="form-control w-full max-w-xs">

@@ -34,13 +34,31 @@ const Login = () => {
             const user = result.user;
             console.log(user.displayName)
             const googleUser = { name: user.displayName, email:user.email}
-            // saveUserToDB(googleUser.displayName, googleUser.email)
+            saveUserToDB(googleUser.name, googleUser.email)
             navigate(from, { replace: true });
         })
         .catch(err=>{
             console.error(err)
         })
     }
+
+    const saveUserToDB = (name, email) =>{
+        const user = {name:name, email:email, address:'', contact:'', university:''};
+        console.log(user)
+        fetch('http://localhost:5000/googleUser',{
+            method: 'PUT',
+            headers: {
+                'content-type':'application/json'
+            },
+            body: JSON.stringify(user)
+
+        })
+        .then(res=> res.json())
+        .then(data=>{
+            console.log(data)
+        })
+    }
+
     return (
         <div className='h-[800px] flex justify-center items-center font-bold' >
             <div className='w-auto'>

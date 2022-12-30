@@ -43,7 +43,7 @@ useState( ()=>{
                     {
                         post.text.length > 100 ?
                             <>
-                                <p class="truncate ...">{post.text.slice(0, 100)}</p>
+                                <p className="truncate ...">{post.text.slice(0, 100)}</p>
                                 <Link to={`/mediaDetails/${post._id}`}>see more</Link>
                             </>
                             :

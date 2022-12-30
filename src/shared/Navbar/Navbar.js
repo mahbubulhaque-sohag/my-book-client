@@ -1,20 +1,23 @@
 import React, { useContext } from 'react';
 import { toast } from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { authContext } from '../../context/AuthProvider';
 
 const Navbar = () => {
     const {logout} = useContext(authContext);
+    const navigate = useNavigate()
 
     const handleLogout = () =>{
         logout()
             .then(() => {
                 toast.success('logout successfully')
+                navigate('/login')
             })
             .catch(err => console.error(err))
     }
 
     const navMenu = <>
+        <li><Link to='/'>Home</Link></li>
         <li><Link to='media'>Media</Link></li>
         <li><Link>Message</Link></li>
         <li><Link to='/about'>About</Link></li>

@@ -45,7 +45,7 @@ const Login = () => {
     const saveUserToDB = (name, email) =>{
         const user = {name:name, email:email, address:'', contact:'', university:''};
         console.log(user)
-        fetch('http://localhost:5000/googleUser',{
+        fetch('https://my-book-server-eta.vercel.app/googleUser',{
             method: 'PUT',
             headers: {
                 'content-type':'application/json'

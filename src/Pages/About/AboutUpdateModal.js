@@ -15,7 +15,7 @@ const AboutUpdateModal = ({ userInfo }) => {
         console.log(updatedProfile)
 
  
-        fetch(`http://localhost:5000/updateProfile/${_id}`, {
+        fetch(`https://my-book-server-eta.vercel.app/updateProfile/${_id}`, {
             method: 'PUT', 
             headers: {
                 'Content-Type': 'application/json',

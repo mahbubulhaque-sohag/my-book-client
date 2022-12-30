@@ -15,7 +15,7 @@ const MediaCard = ({ post }) => {
     // const { isLoading, error, data = [] } = useQuery({
     //     queryKey: ['comment/:id',],
     //     queryFn: async () => {
-    //         const res = await fetch(`http://localhost:5000/comment/${post._id}`);
+    //         const res = await fetch(`https://my-book-server-eta.vercel.app/comment/${post._id}`);
     //         const data = await res.json();
     //         return data
     //     }
@@ -24,7 +24,7 @@ const MediaCard = ({ post }) => {
     // if (isLoading) return <progress className="progress w-56"></progress>;
     const[comments, setComments] = useState([]);
 useState( ()=>{
-    fetch(`http://localhost:5000/comment/${post._id}`)
+    fetch(`https://my-book-server-eta.vercel.app/comment/${post._id}`)
     .then(res=>res.json())
     .then(data=>{
         console.log(data)

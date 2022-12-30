@@ -11,7 +11,7 @@ const LikeButton = ({post,user,likeCount,setLikeCount}) => {
         setLikeCount()
         const like = { likeCount: likes,  uid: uid };
         console.log(like);
-        fetch(`http://localhost:5000/post/${id}`, {
+        fetch(`https://my-book-server-eta.vercel.app/post/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { authContext } from '../../context/AuthProvider';
 
 const Navbar = () => {
-    const {logout} = useContext(authContext);
+    const {logout, user} = useContext(authContext);
     const navigate = useNavigate()
 
     const handleLogout = () =>{
@@ -21,7 +21,7 @@ const Navbar = () => {
         <li><Link to='media'>Media</Link></li>
         <li><Link>Message</Link></li>
         <li><Link to='/about'>About</Link></li>
-        <li><Link onClick={handleLogout}>LogOut</Link></li>
+        {user && <li><Link onClick={handleLogout}>LogOut</Link></li>}
     </>
     return (
         <div className="navbar bg-base-100">

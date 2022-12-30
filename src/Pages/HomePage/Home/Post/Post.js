@@ -37,7 +37,7 @@ const Post = () => {
                     console.log(post)
 
                     // save product information to the database
-                    fetch('http://localhost:5000/posts',{
+                    fetch('https://my-book-server-eta.vercel.app/posts',{
                         method: 'POST',
                         headers: {
                             'content-type' : 'application/json'

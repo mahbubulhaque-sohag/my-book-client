@@ -8,7 +8,7 @@ const Comment = ({post, user}) => {
         let text = event.target.comment.value;
         const comment = {postId : post._id, text: text, name: user?.displayName, uid: user?.uid};
         console.log(comment);
-        fetch(`http://localhost:5000/comment`, {
+        fetch(`https://my-book-server-eta.vercel.app/comment`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

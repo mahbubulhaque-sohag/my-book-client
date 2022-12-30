@@ -32,7 +32,7 @@ const Register = () => {
     const saveUserToDB = (name, email) => {
         const user = {name, university: '', address: '', contact: '', email};
         console.log(user)
-        fetch('http://localhost:5000/users',{
+        fetch('https://my-book-server-eta.vercel.app/users',{
             method: 'POST',
             headers: {
                 'content-type':'application/json'
